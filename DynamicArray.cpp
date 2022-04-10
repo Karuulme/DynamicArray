@@ -74,12 +74,3 @@ int main()
     char t[] = "memet";
 
 }
-
-/*
-int main()
-{
-    char str[] = "Memet bu bir ";
-    memmove(str, str+1,2);
-    puts(str);
-    return 0;
-}*/
