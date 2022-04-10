@@ -69,8 +69,4 @@ int main()
     array.Add(3);
     array.Add(4);
     array.Read();
-    char* a;
-    int b = 0;
-    char t[] = "memet";
-
 }
