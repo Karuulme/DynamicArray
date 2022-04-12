@@ -11,9 +11,7 @@ public:
         return (i >= _Lengh) ?  0 : StartPoint[i];
     }
     void Read() {
-        for (int i = 0; i < _Lengh; i++) {
-            cout << StartPoint[i] << endl;
-        }
+        Readme();   
     }
     int Lengh() {
         return _Lengh;
@@ -21,52 +19,60 @@ public:
     void Add(T value)
     {
         if (_Lengh > 0) {
-             _Lengh++;
-             NextValue(&value);
+            _Lengh++;
+            NextValue(&value);
         }
-        else {
+        else{
             _Lengh++;
             FirstValue(&value);
         }
+         
     }
 private:
-    int _Lengh = 0;
-    T *StartPoint;
 
-    void FirstValue(T * value) {
-        StartPoint =(T*) malloc(sizeof(T) * _Lengh);
-        *StartPoint = *value;
-    }
-    void NextValue(T * value) {
-        T* NewStartPoint = (T*)malloc(sizeof(T) * _Lengh);
-        if (NewStartPoint != NULL) {
-            Transfer(NewStartPoint, value);
-            StartPoint = NewStartPoint;
-            NewStartPoint = NULL;
-         }  
-        else {
-            _Lengh--;
+    int _Lengh = 0;
+    T **StartPoint;
+    int CharPointCount=0;
+
+    void Readme() {
+        for (int i = 0; i < _Lengh; i++) {
+            cout<< *StartPoint[i] << endl;
         }
     }
-    void  Transfer(T *NewStartPoint, T *value) {
-       int i = 0;
-       do
-        {
-            NewStartPoint[i] = StartPoint[i];
-            i++;
-        } while (i <= _Lengh - 2);
-        NewStartPoint[_Lengh - 1] = *value;
-        free(StartPoint);
+    void FirstValue(T * value) {
+        T* NPoint = new T[3];
+        NPoint = value;
+       // StartPoint = new  T[1]; //(typeid(value))malloc(typeid(*value).name()+1);
+        StartPoint = &NPoint;
+        // cout<<typeid(NPoint).name()<<endl;
     }
+    void NextValue(T * value,int Type=0) {
+        T* NPoint = new T[1]; // (typeid(value))malloc(typeid(*value).name() + 1);
+        *NPoint = *value;
+        MemoryExpansion(NPoint);
+    }
+    
+    void MemoryExpansion(T* NValue) {
+    	
+        T** NewStartPoint = StartPoint;
+        StartPoint = new T*[_Lengh];
+        
+        for (int i = 0; i < _Lengh ; i++)
+        {
+            StartPoint[i] = NewStartPoint[i];
+        }
+        StartPoint[_Lengh-1] = NValue;
 
+        //free(NewStartPoint);
+     
+    }
+    
 };
-
 int main()
 {
-    List<int> array;
-    array.Add(1);
-    array.Add(2);
-    array.Add(3);
-    array.Add(4);
-    array.Read();
+    List<char*> array;
+    array.Add("10");
+    array.Add("20");
+    array.Add("30");
+    array.Read(); 
 }
