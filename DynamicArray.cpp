@@ -2,77 +2,73 @@
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 using namespace std;
 template<class T>
 class List
 {
 public:
     int GetIndex(unsigned int i) {
-        return (i >= _Lengh) ?  0 : StartPoint[i];
+        return (i >= _Lengh) ? 0 : *StartPoint[i];
     }
     void Read() {
-        Readme();   
+        for (int i = 0; i < _Lengh; i++) {
+             cout<< *StartPoint[i] << endl;
+        }
     }
     int Lengh() {
         return _Lengh;
     }
     void Add(T value)
     {
-        if (_Lengh > 0) {
-            _Lengh++;
-            NextValue(&value);
+        MemoryPointCreate(&value);
+    }
+    int * GetAll() {
+        int GetAllList[_Lengh];
+        for (int i = 0; i < _Lengh;i++) {
+            GetAllList[i] = *StartPoint[i];
         }
-        else{
-            _Lengh++;
-            FirstValue(&value);
-        }
-         
+        return GetAllList;
     }
 private:
-
     int _Lengh = 0;
-    T **StartPoint;
-    int CharPointCount=0;
+    T** StartPoint;
+    T *_FirstValue = new T[1];
 
-    void Readme() {
-        for (int i = 0; i < _Lengh; i++) {
-            cout<< *StartPoint[i] << endl;
-        }
-    }
-    void FirstValue(T * value) {
-        T* NPoint = new T[3];
-        NPoint = value;
-       // StartPoint = new  T[1]; //(typeid(value))malloc(typeid(*value).name()+1);
-        StartPoint = &NPoint;
-        // cout<<typeid(NPoint).name()<<endl;
-    }
-    void NextValue(T * value,int Type=0) {
+    void MemoryPointCreate(T* value, int Type = 0) {
         T* NPoint = new T[1]; // (typeid(value))malloc(typeid(*value).name() + 1);
         *NPoint = *value;
         MemoryExpansion(NPoint);
     }
-    
     void MemoryExpansion(T* NValue) {
-    	
-        T** NewStartPoint = StartPoint;
-        StartPoint = new T*[_Lengh];
-        
-        for (int i = 0; i < _Lengh ; i++)
-        {
-            StartPoint[i] = NewStartPoint[i];
+        if (_Lengh > 0) {
+            _Lengh++;
+            T** NewStartPoint = StartPoint;
+            StartPoint = new T * [_Lengh];
+            for (int i = 0; i < _Lengh-1; i++)
+            {
+                StartPoint[i] = NewStartPoint[i];
+            }
+            StartPoint[_Lengh - 1] = NValue;
+            free(NewStartPoint);
         }
-        StartPoint[_Lengh-1] = NValue;
-
-        //free(NewStartPoint);
-     
+        else {
+            _Lengh++;
+            StartPoint = new T * [_Lengh];
+            StartPoint[0] = NValue;
+        }
     }
-    
 };
 int main()
 {
-    List<char*> array;
-    array.Add("10");
-    array.Add("20");
-    array.Add("30");
-    array.Read(); 
+    List<int> array;
+    array.Add(10);
+    array.Add(20);
+    array.Add(30);
+    //array.Read();
+    for (int i = 0; i < array.Lengh(); i++)
+    {
+        cout << array.GetIndex(i)<<endl;
+
+    }
 }
