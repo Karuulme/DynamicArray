@@ -33,7 +33,6 @@ public:
 private:
     int _Lengh = 0;
     T** StartPoint;
-    T *_FirstValue = new T[1];
 
     void MemoryPointCreate(T* value, int Type = 0) {
         T* NPoint = new T[1]; // (typeid(value))malloc(typeid(*value).name() + 1);
@@ -65,7 +64,6 @@ int main()
     array.Add(10);
     array.Add(20);
     array.Add(30);
-    //array.Read();
     for (int i = 0; i < array.Lengh(); i++)
     {
         cout << array.GetIndex(i)<<endl;
