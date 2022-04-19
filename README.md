@@ -10,7 +10,11 @@ Private olarak eklenen `_Lengh` dizimizin kaç elemandan oluştuğunu gösteriyo
 
 Fark ettiyseniz,  classın hemen üstünde  tanımladığımız `template<class T>` , bize hangi tipte tanımlanırsa, o tip ile çalışacağımızı belirtiyor.
 
-Tekrar `T** StartPoint` a gelirsek, tanımlanan tipin tipinde bellekte yer ayırmakta.
+Tekrar `T** StartPoint` a gelirsek, tanımlanan tipin tipinde bellekte yer ayırmakta.  `*` yani `Pointer` in hepimiz ne olduğunu biliyoruz. Tanımlamak gerekirse, hangi tip ile belirtilirse o tipte, tipin bellekte kapladığı alan kadar, bellekte yer ayırmakta.
+
+Peki `**` çift yıldız neden ?
+Evet, burası çok önemli bir nokta, bizim pointer dediğimiz şeyin aslında bellekte bir yer ayrılmış ve içerisine sadece değer atanabilir durumda, fakat biz `Pointer to Pointer` yaklaşımını kullanacağız. Yani buda şu demek oluyor , programın genel yapısına bakıldığında, Biz her bir değer için o değer için bellekte bir yer ayırıp değeri onun içerisine aktarıyoruz, sonrada bu belleğin adresini, başlangıçta tanımladığımız `T** StartPoint` pointerini yeniden  genişleterek/tanımlayarak adresleri içerisine aktarıyoruz.
+
  
 
 
