@@ -13,8 +13,13 @@ Fark ettiyseniz,  classın hemen üstünde  tanımladığımız `template<class 
 Tekrar `T** StartPoint` a gelirsek, tanımlanan tipin tipinde bellekte yer ayırmakta.  `*` yani `Pointer` in hepimiz ne olduğunu biliyoruz. Tanımlamak gerekirse, hangi tip ile belirtilirse o tipte, tipin bellekte kapladığı alan kadar, bellekte yer ayırmakta.
 
 Peki `**` çift yıldız neden ?
-
 Evet, burası çok önemli bir nokta, bizim pointer dediğimiz şeyin aslında bellekte bir yer ayrılmış ve içerisine sadece değer atanabilir durumda, fakat biz `Pointer to Pointer` yaklaşımını kullanacağız. Yani buda şu demek oluyor , programın genel yapısına bakıldığında, Biz her bir değer için o değer için bellekte bir yer ayırıp değeri onun içerisine aktarıyoruz, sonrada bu belleğin adresini, başlangıçta tanımladığımız `T** StartPoint` pointerini yeniden  genişleterek/tanımlayarak adresleri içerisine aktarıyoruz.
+
+Buraya kadar kafanızda bir soru işareti yoksa, programa tanımlamalardan ve bir değer eklemeden başlayalım.
+
+`main` içerisine classımızı int tipinde olacak şekilde tanımladık  `List<int> array `. İçerisine bir değer atamamız için `public` olarak `Add` fonksiyonu ekledik.
+`Add` fonksiyonumuz tanımlanan `T` tipinde değer alacaktır. Aldığımız değeri `MemoryPointCreate` e bellekteki adresini gönderiyoruz. `MemoryPointCreate` e gelirsek, az önce bahsettiğim işlemi yapıyoruz. Bellekte `T`  tipinde bir pointer oluşturuyoruz. Burada `malloc` da kullanabilirsiniz işlem kalabalığından kurtulmak için `new T[1]` kullandım.
+Ardından gönderilen veriyi, belelkte ayırdığımız yere aktarıyoruz ve verinin adresini kayıt edeceğimiz yeri ayarlamak için `MemoryExpansion` a gönderiyoruz.
 
  
 
