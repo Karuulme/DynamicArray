@@ -20,7 +20,9 @@ Buraya kadar kafanızda bir soru işareti yoksa, programa tanımlamalardan ve bi
 
 `main` içerisine classımızı int tipinde olacak şekilde tanımladık  `List<int> array `. İçerisine bir değer atamamız için `public` olarak `Add` fonksiyonu ekledik.
 `Add` fonksiyonumuz tanımlanan `T` tipinde değer alacaktır. Aldığımız değeri `MemoryPointCreate` e bellekteki adresini gönderiyoruz. `MemoryPointCreate` e gelirsek, az önce bahsettiğim işlemi yapıyoruz. Bellekte `T`  tipinde bir pointer oluşturuyoruz. Burada `malloc` da kullanabilirsiniz işlem kalabalığından kurtulmak için `new T[1]` kullandım.
-Ardından gönderilen veriyi, belelkte ayırdığımız yere aktarıyoruz ve verinin adresini kayıt edeceğimiz yeri ayarlamak için `MemoryExpansion` a gönderiyoruz.
+Ardından gönderilen veriyi, belelkte ayırdığımız yere aktarıyoruz ve verinin adresini kayıt edeceğimiz yeri ayarlamak için `MemoryExpansion` a verinin adresini gönderiyoruz.
+
+Listenin ilk kaydını yapmamız çok kolay, Listenin ilk değeri için listenin uzunluğunu kontrol ediyoruz. `_Lengh` i bir kez arttırıyoruz, `StartPoint` i değerlerin adresini tutabileceği alan kadar yani `_Lengh` kadar yer ayırıyoruz. Ardından ayırdığımız yerin 0. indexine  değerin adresini aktarıyoruz.
 
  
 
