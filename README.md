@@ -23,11 +23,30 @@ Buraya kadar kafanızda bir soru işareti yoksa, programa tanımlamalardan ve bi
 Ardından gönderilen veriyi, belelkte ayırdığımız yere aktarıyoruz ve verinin adresini kayıt edeceğimiz yeri ayarlamak için `MemoryExpansion` a verinin adresini gönderiyoruz.
 
 Listenin ilk kaydını yapmamız çok kolay, Listenin ilk değeri için listenin uzunluğunu kontrol ediyoruz. `_Lengh` i bir kez arttırıyoruz, `StartPoint` i değerlerin adresini tutabileceği alan kadar yani `_Lengh` kadar yer ayırıyoruz. Ardından ayırdığımız yerin 0. indexine  değerin adresini aktarıyoruz.
+```
+_Lengh++;
+StartPoint = new T * [_Lengh];
+StartPoint[0] = NValue;
+```
 
- 
+2. Değerimizi ekleyelim ve programın bizi asıl ilgilendirdiği yere gelelim. 
+```
+ _Lengh++;
+T** NewStartPoint = StartPoint;
+StartPoint = new T * [_Lengh];
+for (int i = 0; i < _Lengh-1; i++)
+{
+    StartPoint[i] = NewStartPoint[i];
+}
+StartPoint[_Lengh - 1] = NValue;
+free(NewStartPoint);
+```
+Aynı şekilde gönderdiğimiz değerler ilkinden sonra buraya gelecektir. Program kodlarına bakarsak, `_Lengh` değerini 1 arttırıyoruz. Biz bellekten yeni boyutta bir yer ayıracağız, bir yeni boyutta bir yer ayırdığımızda önceki yerimizin adresini kayıp olacağı için bu adresi başka bir yere geçici olarak `NewStartPoint ` e aktarıyoruz.
+`StartPoint = new T * [_Lengh]` tam burada, değerlerin adreslerini tutan `StartPoint` in boyutunda bellekten yeni bir yer ayırıyor.
 
+Peki şimdi ne olacak ? Bellekten yeni bir yer tahsis etmeden önce önceki boyutun adresini `NewStartPoint ` e aktarmıştık hatırlarsanız. Şimdi eski değerleri bellekten yeni tahsis ettiğimiz yere aktarıyoruz `StartPoint[i] = NewStartPoint[i]`.
+Eski değerleri yeni tahsis edilen yere aktardık. En son gönderilen değerin adresinide `StartPoint[_Lengh - 1] = NValue`  yani `StartPoint` in en son indexine aktarıyoruz.
+`_Lengh - 1` dememizin sebebi indexlerin 0 dan başladığı için 1 eksiğini alıyoruz.
 
-
-
-
-
+ `public` alanında yazılan fonksiyonlar kullanıcının yada sizin ihtiyaçlarınıza göre değişiklik gösterebilir. `Read()` de mesela tüm değerleri konsola yazdırmakta. `Lengh()`de  ise dizinin uzunluğunu geri döndürüyor.
+`GetIndex()` de istenilen indexdeki değeri geri döndürüyor.
