@@ -1,4 +1,4 @@
-**Merhaba değerli okur,**
+**Selamlar**
 
 Bu programda dinamik olarak, yani sabit olarak tanımlanan dizilerden farklı olarak, bir veri türünü sınırsız elemanda tutabilecek programı yazacağız.
 
