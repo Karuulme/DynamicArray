@@ -1,4 +1,5 @@
-Merhaba değerli okur,
+**Merhaba değerli okur,**
+
 Bu programda dinamik olarak, yani sabit olarak tanımlanan dizilerden farklı olarak, bir veri türünü sınırsız elemanda tutabilecek programı yazacağız.
 
 İlk olarak işe `template`in ne olduğundan bahsedeyim. `Template` : Bir fonksiyona yada sınıfa atanan veri türüne göre değişkenlik gösteren ve bizim bu esneklikten yararlanabildiğimiz bir şablondur.
