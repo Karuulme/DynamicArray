@@ -34,7 +34,7 @@ private:
     int _Lengh = 0;
     T** StartPoint;
 
-    void MemoryPointCreate(T* value, int Type = 0) {
+    void MemoryPointCreate(T* value) {
         T* NPoint = new T[1]; // (typeid(value))malloc(typeid(*value).name() + 1);
         *NPoint = *value;
         MemoryExpansion(NPoint);
