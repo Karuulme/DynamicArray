@@ -49,5 +49,9 @@ Peki şimdi ne olacak ? Bellekten yeni bir yer tahsis etmeden önce önceki boyu
 Eski değerleri yeni tahsis edilen yere aktardık. En son gönderilen değerin adresinide `StartPoint[_Lengh - 1] = NValue`  yani `StartPoint` in en son indexine aktarıyoruz.
 `_Lengh - 1` dememizin sebebi indexlerin 0 dan başladığı için 1 eksiğini alıyoruz.
 
+Peki ne olacak bu `NewStartPoint` e ? 
+
+`NewStartPoint` bu arkadaşımız bizim `StartPoint`'in eski adresini tuttuğu için bellekte o alanı serbest bırakmamız gerekiyor. `free(NewStartPoint)`  `free` fonksiyonu kullanarak eski alanımızı serbest bırakıyoruz.
+
  `public` alanında yazılan fonksiyonlar kullanıcının yada sizin ihtiyaçlarınıza göre değişiklik gösterebilir. `Read()` de mesela tüm değerleri konsola yazdırmakta. `Lengh()`de  ise dizinin uzunluğunu geri döndürüyor.
 `GetIndex()` de istenilen indexdeki değeri geri döndürüyor.
