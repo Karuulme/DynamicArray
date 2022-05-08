@@ -24,6 +24,9 @@ Buraya kadar kafanızda bir soru işareti yoksa, programa tanımlamalardan ve bi
 Ardından gönderilen veriyi, belelkte ayırdığımız yere aktarıyoruz ve verinin adresini kayıt edeceğimiz yeri ayarlamak için `MemoryExpansion` a verinin adresini gönderiyoruz.
 
 Listenin ilk kaydını yapmamız çok kolay, Listenin ilk değeri için listenin uzunluğunu kontrol ediyoruz. `_Lengh` i bir kez arttırıyoruz, `StartPoint` i değerlerin adresini tutabileceği alan kadar yani `_Lengh` kadar yer ayırıyoruz. Ardından ayırdığımız yerin 0. indexine  değerin adresini aktarıyoruz.
+
+
+
 ```
 _Lengh++;
 StartPoint = new T * [_Lengh];
