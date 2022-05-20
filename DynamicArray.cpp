@@ -8,30 +8,50 @@ template<class T>
 class List
 {
 public:
+	int Remove(unsigned int index){
+		try{
+			_Length--;
+            T** NewStartPoint = StartPoint;
+            StartPoint = new T * [_Length];
+            for (int i = 0,j=0; i < _Length+1; i++)
+            {
+            	if(index!=i){
+            		StartPoint[j] = NewStartPoint[i];
+            		j++;
+				}
+				
+            }
+            delete(NewStartPoint);
+            return 1;
+		}
+		catch (int myNum) {
+			return 0;
+		}
+	}
     int GetIndex(unsigned int i) {
-        return (i >= _Lengh) ? 0 : *StartPoint[i];
+        return (i >= _Length) ? 0 : *StartPoint[i];
     }
     void Read() {
-        for (int i = 0; i < _Lengh; i++) {
+        for (int i = 0; i < _Length; i++) {
              cout<< *StartPoint[i] << endl;
         }
     }
-    int Lengh() {
-        return _Lengh;
+    int Length() {
+        return _Length;
     }
     void Add(T value)
     {
         MemoryPointCreate(&value);
     }
     int * GetAll() {
-        int GetAllList[_Lengh];
-        for (int i = 0; i < _Lengh;i++) {
+        int GetAllList[_Length];
+        for (int i = 0; i < _Length;i++) {
             GetAllList[i] = *StartPoint[i];
         }
         return GetAllList;
     }
 private:
-    int _Lengh = 0;
+    int _Length = 0;
     T** StartPoint;
 
     void MemoryPointCreate(T* value) {
@@ -40,20 +60,20 @@ private:
         MemoryExpansion(NPoint);
     }
     void MemoryExpansion(T* NValue) {
-        if (_Lengh > 0) {
-            _Lengh++;
+        if (_Length > 0) {
+            _Length++;
             T** NewStartPoint = StartPoint;
-            StartPoint = new T * [_Lengh];
-            for (int i = 0; i < _Lengh-1; i++)
+            StartPoint = new T * [_Length];
+            for (int i = 0; i < _Length-1; i++)
             {
                 StartPoint[i] = NewStartPoint[i];
             }
-            StartPoint[_Lengh - 1] = NValue;
-            free(NewStartPoint);
+            StartPoint[_Length - 1] = NValue;
+            delete(NewStartPoint);
         }
         else {
-            _Lengh++;
-            StartPoint = new T * [_Lengh];
+            _Length++;
+            StartPoint = new T * [_Length];
             StartPoint[0] = NValue;
         }
     }
@@ -64,7 +84,14 @@ int main()
     array.Add(10);
     array.Add(20);
     array.Add(30);
-    for (int i = 0; i < array.Lengh(); i++)
+      array.Add(40);
+        array.Add(50);
+          array.Add(60);
+            array.Add(70);
+              array.Add(80);
+              
+    array.Remove(1);
+    for (int i = 0; i < array.Length(); i++)
     {
         cout << array.GetIndex(i)<<endl;
 
